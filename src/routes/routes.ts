@@ -1,5 +1,5 @@
 import { lazy, LazyExoticComponent } from "react";
-// import { NoLazy } from "../01-lazyload/pages/NoLazy";
+import { NoLazy } from "../01-lazyload/pages/NoLazy";
 
 type JSXComponent = () => JSX.Element
 
@@ -13,12 +13,9 @@ interface RouteProps {
 
 // LazyLoad
 // Los comentarios es para cambiar el nombre de los chunk
-const lazy1 = lazy( () => import(/* webpackChunkName: "LazyPage1" */ '../01-lazyload/pages/LazyPage1') )
-const lazy2 = lazy( () => import(/* webpackChunkName: "LazyPage2" */ '../01-lazyload/pages/LazyPage2') )
-const lazy3 = lazy( () => import(/* webpackChunkName: "LazyPage3" */ '../01-lazyload/pages/LazyPage3') )
+const lazyLayout = lazy( () => import(/* webpackChunkName: "LazyLayout" */ '../01-lazyload/layout/LazyLayout') )
 
 export const routes:RouteProps[] = [
-    { to: '/lazy1', path: 'lazy1', Component: lazy1, name: 'Lazy 1' },
-    { to: '/lazy2', path: 'lazy2', Component: lazy2, name: 'Lazy 2' },
-    { to: '/lazy3', path: 'lazy3', Component: lazy3, name: 'Lazy 3' }
+    { to: '/lazylayout', path: '/lazylayout/*', Component: lazyLayout, name: 'LazyLayout' },
+    { to: '/lazy2', path: 'lazy2', Component: NoLazy, name: 'No Lazy' }
 ]
